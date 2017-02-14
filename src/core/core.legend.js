@@ -373,8 +373,10 @@ module.exports = function(Chart) {
 				var fillText = function(x, y, legendItem, textWidth) {
 					ctx.fillText(legendItem.text, boxWidth + (fontSize / 2) + x, y);
 
-					if (legendItem.hidden) {
-						// Strikethrough the text if hidden
+					if(legendItem.disabledLabelStyle && legendItem.disabledLabelStyle === 'fade'){
+							ctx.fillStyle = '#999';
+      						ctx.fill();
+					}else{
 						ctx.beginPath();
 						ctx.lineWidth = 2;
 						ctx.moveTo(boxWidth + (fontSize / 2) + x, y + (fontSize / 2));
